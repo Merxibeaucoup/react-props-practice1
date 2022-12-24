@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+// import Contact from "./Contact";
+import Jokes from "./practice/Jokes";
+import Card from "./project/Card";
+import Hero from "./project/Hero";
+import Navbar from "./project/Navbar";
+import jokesData from "./practice/jokesData";
+import data from "./data";
 
 function App() {
+  const jokeElements = jokesData.map((j) => (
+    <Jokes setup={j.setup} punchline={j.punchline} />
+  ));
+
+  const cardElements = data.map((item) => <Card key={item.id} {...item} />);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* {jokeElements} */}
+
+      <Navbar />
+      <Hero />
+      <section className="card-list">{cardElements}</section>
     </div>
   );
 }
